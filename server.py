@@ -1,6 +1,7 @@
 from flask import Flask, render_template,jsonify,request
 from random import randint
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 @app.route("/")
 def hello():
@@ -54,3 +55,6 @@ def recipe():
 
 if __name__ == "__main__":
   app.run()
+
+
+# FLASK_APP=server.py flask run  or python server.py
