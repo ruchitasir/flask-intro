@@ -1,4 +1,4 @@
-from flask import Flask, render_template,jsonify
+from flask import Flask, render_template,jsonify,request
 from random import randint
 app = Flask(__name__)
 
@@ -39,6 +39,18 @@ ingredients = ['apples','pineapple','mangoes']
 def pie_random():
     index = randint(0,2)
     return jsonify({'pie ingredient': ingredients[index]})     
+
+@app.route("/recipe", methods = ['POST', 'GET'])
+def recipe():
+    pie={'name':'Apple pie', 'ingredients' : ['flour','sugar']
+            }
+    pie_ingredient = ''        
+    if request.method == 'POST':
+      pie_ingredient = request.form['ingredient']
+      print('pie_ingredient',pie_ingredient)
+      pie['ingredients'].append(pie_ingredient)
+    #else:
+    return render_template("recipe.html", pie=pie) 
 
 if __name__ == "__main__":
   app.run()

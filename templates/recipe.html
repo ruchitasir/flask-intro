@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Recipe Flask Practise</title>
+</head>
+<body>
+    <h2>Welcome to my recipe blog</h2>
+    <h3>We are making a pie recipe</h3>
+    {{pie.name}}
+    <h4>Ingredients: </h4>
+
+    {% for ingredient in pie.ingredients %}
+    <div><p>{{ ingredient }} </p></div>
+    {% endfor %}
+      
+    <form action = "/recipe" method = "post">
+        <p>Enter Ingredient:</p>
+        <p><input type = "text" name = "ingredient" /></p>
+        <p><input type = "submit" value = "submit" /></p>
+     </form>
+
+</body>
+</html>
